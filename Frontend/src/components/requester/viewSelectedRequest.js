@@ -1,36 +1,68 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { useParams, useNavigate } from "react-router-dom";
 import { removeRequest } from "../../api/requester.api";
 import { getCookie } from "../common/getCookie";
+import axios from "../../api/axios";
 
-export default function ViewSelectedRequest({ requestData }) {
+const LOGIN_URL = "/requester/updateReqStatus";
+
+export default function ViewSelectedRequest({ requestData, getOneRequest }) {
   const { requesterId } = useParams();
   const navigate = useNavigate();
-  console.log(requesterId);
+
+  const [localStatus, setLocalStatus] = useState(requestData.status);
+
+  useEffect(() => {
+    setLocalStatus(requestData.status);
+  }, [requestData]);
+
+  const handleClick = async (id) => {
+    const userId = getCookie("uId");
+
+    try {
+      const response = await axios.post(
+        `${LOGIN_URL}/${id}`,
+        { status: userId },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+
+      console.log(response.data);
+
+      // Update local state
+      setLocalStatus(userId);
+
+      swal("Request Accepted Successfully!", { icon: "success" });
+    } catch (error) {
+      console.error(error.response?.data || error.message);
+      swal("Something went wrong!", { icon: "error" });
+    }
+
+    // No need to mutate requestData directly
+    // Optionally refresh the data if needed
+    getOneRequest(requesterId);
+  };
 
   const deleteRequest = (e) => {
     e.preventDefault();
     swal({
       title: "Are you sure?",
-      text: "If you remove the fund request, all contributions collected so far will be lost and you wonn't be able to recover them.",
+      text: "If you remove the fund request, all contributions collected so far will be lost and you won't be able to recover them.",
       icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        console.log(requesterId);
         removeRequest(requesterId)
-          .then((res) => {
-            swal("Fund request has been deleted!", {
-              icon: "success",
-            });
+          .then(() => {
+            swal("Fund request has been deleted!", { icon: "success" });
             navigate("/requester/all/requests");
           })
-          .catch((err) => {
-            swal("Something went wrong!", {
-              icon: "error",
-            });
+          .catch(() => {
+            swal("Something went wrong!", { icon: "error" });
           });
       }
     });
@@ -62,22 +94,21 @@ export default function ViewSelectedRequest({ requestData }) {
               </div>
               <div className="card-body">
                 <div className="row border-bottom">
-                  <div
-                  //   className={classes.ActionBtnSec}
-                  >
-                    <button
-                      className="btn btn-outline-success"
-                      onClick={() => {
-                        // onView(org._id);
-                      }}
-                    >
-                      Accept this request
-                    </button>
+                  <div>
+                    {localStatus === "started" ? (
+                      <button
+                        className="btn btn-outline-success"
+                        onClick={() => handleClick(requesterId)}
+                      >
+                        Accept this request
+                      </button>
+                    ) : (
+                      <button className="btn btn-success" disabled>
+                        Request Accepted
+                      </button>
+                    )}
                   </div>
                 </div>
-                {/* <div className="row border-bottom">
-                  <p className="card-text">{requestData.description}</p>
-                </div> */}
               </div>
             </div>
           </div>
