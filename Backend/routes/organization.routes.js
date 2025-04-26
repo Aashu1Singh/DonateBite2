@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.get("/", getAllOrganizations)
 router.get("/:id", getOrganization)
-router.post("login",handleOrganizationLogin)
+router.post("/login",handleOrganizationLogin)
 router.post("/register", createOrganization);
 router.get("/view", getAllOrganizations)
 router.put("/update/:id", updateOrganization)
