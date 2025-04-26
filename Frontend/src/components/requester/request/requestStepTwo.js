@@ -3,7 +3,6 @@ import { FileUploader } from 'react-drag-drop-files';
 import { multiStepContext } from '../request/stepContex';
 import "../footer.css"
 import { Link } from 'react-router-dom';
-
 export default function RequestStepTwo() {
   const { requestData, setRequestData, submitData, requestImage, setRequestImage, formErrorsStep2 } = useContext(multiStepContext);
   const fileTypes = ["JPEG", "JPG", "PNG"];
@@ -19,6 +18,7 @@ export default function RequestStepTwo() {
             console.log('Error: ', error);
         };
     }
+   
 
     const handleChange = (file) => {
         setRequestImage(file);
@@ -41,8 +41,8 @@ export default function RequestStepTwo() {
     <div className="card z-index-0 fadeIn3 fadeInBottom card-step-2">
     <div className="card-body">
         <form class="form-control"> 
-          <p class="h3 fw-bold text-center mb-2 pt-4"> Let's make a request </p>
-          <p class="text-center d-flex ms-3 pt-4 text-muted fw-bold"> Request details </p> 
+          <p class="h3 fw-bold text-center mb-2 pt-4"> Let's share food </p>
+          <p class="text-center d-flex ms-3 pt-4 text-muted fw-bold"> Food Details </p> 
             
             <div class="input-group input-group-outline mb-4 px-4"> 
               <input  type="text" 
