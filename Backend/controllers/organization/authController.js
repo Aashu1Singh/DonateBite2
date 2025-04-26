@@ -1,13 +1,8 @@
-const User = require('../models/user');
-const Organization=require('../models/organization.model')
+const User = require('../../models/user');
+const Organization=require('../../models/organization.model')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const Requester = require('../models/requester.model');
-
-const Organization=require('../models/organization.model')
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const Requester = require('../models/requester.model');
+const Requester = require('../../models/requester.model');
 
 const handleOrganizationLogin = async (req, res) => {
     console.log("PASSEDDD")
