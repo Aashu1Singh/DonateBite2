@@ -61,19 +61,11 @@ export default function NavBar() {
                   Home
                 </a>
               </li>
-              <li className="nav-item ms-3">
-                <a className="nav-link" href="/fund/all">
-                  Fundraise
-                </a>
-              </li>
-              <li className="nav-item ms-3">
-                <a className="nav-link" href="/donator/home">
-                  Donations
-                </a>
-              </li>
+             
+              
               <li className="nav-item ms-3">
                 <a className="nav-link" href="/requester/all/requests">
-                  Fund Requests
+                  Food Alerts
                 </a>
               </li>
               {userId ? (
@@ -94,7 +86,7 @@ export default function NavBar() {
                   >
                     <li>
                       <a className="dropdown-item" href={`/requester/my/requests/${userId}`} key={userId}>
-                        Your Fund Requests
+                        Your Alerts
                       </a>
                     </li>
 
@@ -103,7 +95,7 @@ export default function NavBar() {
                     {setShowDonations ? (
                       <li>
                         <a className="dropdown-item" href="/donator/dashboard">
-                          Your donations
+                          Dashboard
                         </a>
                       </li>
                     ) : (
@@ -112,7 +104,7 @@ export default function NavBar() {
                           className="dropdown-item"
                           href="donator/createDonation"
                         >
-                          Create a donation
+                          Create an alert
                         </a>
                       </li>
                     )}
@@ -126,7 +118,7 @@ export default function NavBar() {
                     </Link>
                     <li>
                       <a className="dropdown-item" href="/requester/new?">
-                        Create request
+                        Create Alert
                       </a>
                     </li>
                     <Link to="/requester/signin">

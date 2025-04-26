@@ -37,7 +37,7 @@ export default function FoodSharingSection() {
         <Link to="/user/signin"><button className="btn btn-outline-success rounded-pill px-4 fw-bold">
           Donors
         </button></Link>
-        <Link to="organization/new"><button className="btn btn-outline-primary rounded-pill px-4 fw-bold">
+        <Link to="organization/login"><button className="btn btn-outline-primary rounded-pill px-4 fw-bold">
           Social Work Organization
         </button>
         </Link>

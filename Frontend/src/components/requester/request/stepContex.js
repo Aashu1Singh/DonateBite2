@@ -22,27 +22,28 @@ export default function StepContex() {
   function submitData(e) {
     e.preventDefault();
     console.log(requestData);
-    setFormErrorsStep2(formValidationStep2(requestData))
+    // setFormErrorsStep2(formValidationStep2(requestData))
     setIsSubmit(true);
 
   }
 
   function handleNext(e) {
     e.preventDefault();
-    setFormErrorsStep1(formValidationStep1(requestData))
+    // setFormErrorsStep1(formValidationStep1(requestData))
     setIsNext(true);
+    setCurrentStep(2)
   }
 
    // To handle the next button in step 1
-   useEffect(() => {
-    console.log(formErrorsStep1)
-    if (Object.keys(formErrorsStep1).length === 0 && isNext) {
-        setCurrentStep(2);
-    } else {
-        setCurrentStep(1);
-        setIsNext(false);
-    }
-}, [formErrorsStep1, isNext])
+//    useEffect(() => {
+//     console.log(formErrorsStep1)
+//     if (Object.keys(formErrorsStep1).length === 0 && isNext) {
+//         setCurrentStep(2);
+//     } else {
+//         setCurrentStep(1);
+//         setIsNext(false);
+//     }
+// }, [formErrorsStep1, isNext])
 
     // To handle the submit button in step 2
     useEffect(() => {
