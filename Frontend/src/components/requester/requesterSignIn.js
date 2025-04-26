@@ -34,8 +34,7 @@ export default function RequesterSignIn() {
 
   const handleSubmit = async (e) => {
       e.preventDefault();
-      // console.log("AAAAAA");
-      // console.log(JSON.stringify({username,password}))
+  
 
       try {
           console.log("HIIIII")

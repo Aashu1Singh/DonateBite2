@@ -5,12 +5,14 @@ import RegisterOrganization from "../pages/organization/registerOrganization";
 import ViewOrganizationFunds from "../pages/fund/viewOrganizationFunds";
 import OrganizationProfile from "../pages/organization/organizationProfile";
 import ViewAllRequests from "../pages/organization/viewAllRequests";
+import { OrgLogin } from "../components/organization/login/OrgLogin";
 
 export default function Organization() {
   return (
     <>
       <Routes>
         <Route path="/dashboard" element={<OrganizationDashboard />} />
+        <Route path="/login" element={<OrgLogin />} />
         <Route path="/new" element={<StepContex><RegisterOrganization /></StepContex>} />
         <Route path="/funds" element={<ViewOrganizationFunds />} />
         <Route path="/all-requests" element={<ViewAllRequests />} />
