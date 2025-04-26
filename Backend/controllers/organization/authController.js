@@ -14,7 +14,7 @@ const handleOrganizationLogin = async (req, res) => {
     // console.log(req.body)
     const { name, password, email } = req.body;
     let foundUser;
-    if ((!name||!email)&&!password) return res.status(400).json({ 'message': 'Username and password are required.' });
+    if ((!name||!email)&&!password) return res.status(400).json({ 'message': 'Name and password are required.' });
 
     foundUser = await Requester.findOne({ email: name }).exec();
     if (!foundUser){
