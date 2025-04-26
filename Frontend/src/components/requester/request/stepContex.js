@@ -18,8 +18,10 @@ export default function StepContex() {
   const [formErrorsStep2, setFormErrorsStep2] = useState({});
   const [isNext, setIsNext] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
+  const[isLoading,setIsLoading]=useState(false);
 
   function submitData(e) {
+    setIsLoading(true);
     e.preventDefault();
     console.log(requestData);
     // setFormErrorsStep2(formValidationStep2(requestData))
@@ -51,6 +53,7 @@ export default function StepContex() {
       if (Object.keys(formErrorsStep2).length === 0 && isSubmit) {
           // console.log(requestData);
           newRequest(requestData).then(res => {
+            setIsLoading(false);
               // console.log(res);
               swal(
                   "Request successfully created!",
@@ -77,7 +80,7 @@ export default function StepContex() {
 
   return (
     <div>
-      <multiStepContext.Provider value={{ currentStep, setCurrentStep, requestData, setRequestData, submitData, requestImage, setRequestImage, formErrorsStep1, formErrorsStep2, handleNext }}>
+      <multiStepContext.Provider value={{ currentStep, setCurrentStep, requestData, setRequestData, submitData, requestImage, setRequestImage, formErrorsStep1, formErrorsStep2, handleNext,isLoading }}>
                 <NewRequest />
       </multiStepContext.Provider>
     </div>
