@@ -89,7 +89,7 @@ export default function UpdateOrgInfo({ organizationId }) {
               type="text"
               className="form-control"
               // placeholder="Organization name"
-              value={userData['name']}
+              value={userData?.['name']}
               onChange={(e) => { setUserData({ ...userData, "name": e.target.value }) }} />
           </div>
           <div className="text-danger form-label mb-3">
@@ -102,7 +102,7 @@ export default function UpdateOrgInfo({ organizationId }) {
               type="text"
               className="form-control"
               // placeholder="Address"
-              value={userData['address']}
+              value={userData?.['address']}
               onChange={(e) => { setUserData({ ...userData, "address": e.target.value }) }} />
           </div>
           <div className="text-danger form-label mb-3">
@@ -115,7 +115,7 @@ export default function UpdateOrgInfo({ organizationId }) {
               type="text"
               className="form-control"
               // placeholder="Country"
-              value={userData['country']}
+              value={userData?.['country']}
               onChange={(e) => { setUserData({ ...userData, "country": e.target.value }) }} />
           </div>
           <div className="text-danger form-label mb-3">
@@ -128,7 +128,7 @@ export default function UpdateOrgInfo({ organizationId }) {
               type="text"
               className="form-control"
               // placeholder="ZIP Code"
-              value={userData['zipCode']}
+              value={userData?.['zipCode']}
               onChange={(e) => { setUserData({ ...userData, "zipCode": e.target.value }) }} />
           </div>
           <div className="text-danger form-label mb-3">
@@ -141,7 +141,7 @@ export default function UpdateOrgInfo({ organizationId }) {
               type="contact"
               className="form-control"
               // placeholder="Contact Number"
-              value={userData['contactNumber']}
+              value={userData?.['contactNumber']}
               onChange={(e) => { setUserData({ ...userData, "contactNumber": e.target.value }) }} />
           </div>
           <div className="text-danger form-label mb-3">
@@ -154,7 +154,7 @@ export default function UpdateOrgInfo({ organizationId }) {
               type="email"
               className="form-control"
               // placeholder="Email"
-              value={userData['email']}
+              value={userData?.['email']}
               onChange={(e) => { setUserData({ ...userData, "email": e.target.value }) }} />
           </div>
           <div className="text-danger form-label mb-3">
