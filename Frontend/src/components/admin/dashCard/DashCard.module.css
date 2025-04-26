@@ -6,6 +6,8 @@
   box-shadow: 10px 10px;
 }
 
+
+
 .DashCard0 {
   margin-left: 5%;
   display: flex;
@@ -13,7 +15,6 @@
   flex-wrap: wrap;
   box-shadow: 10px 10px;
 }
-
 
 .Card {
   /* background-color: #ffffff; */
@@ -31,8 +32,6 @@
 .Card1 {
   /* background-color: #ffffff; */
 
-  
-
   border-radius: 10px;
   width: 70%;
   height: 250px;
@@ -40,10 +39,14 @@
   margin-right: 30px;
   margin-bottom: 40px;
   border: #ea9ab5 solid 1px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   background: url("https://i.ibb.co/MPd46TS/Untitled-design.png");
 }
+.g-button{
 
+
+}
 .Card2 {
   /* background-color: #ffffff; */
 
@@ -57,7 +60,7 @@
   margin-bottom: 60px;
   border: #ea9ab5 solid 1px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  background:linear-gradient(135deg, #f3cfb4 0%,#f39a99 100%);
+  background: linear-gradient(135deg, #f3cfb4 0%, #f39a99 100%);
 }
 
 .CardHeading {
@@ -66,7 +69,7 @@
   padding: 10px 10px 0px 10px;
   font-weight: 700;
   font-size: 20px;
-  color:azure;
+  color: azure;
 }
 
 .CardHeading2 {
