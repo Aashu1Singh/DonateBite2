@@ -1,19 +1,28 @@
-import React from 'react'
+import React from 'react';
 
-export default function allRequestsCard({ request }) {
+export default function AllRequestsCard({ request }) {
     return (
-        <div class="col">
-            <div class="card">
-                <img src={request.requestImage} class="card-img-top"
-                    alt={request.title} />
-                <div class="card-body">
-                    <h5 class="card-title">{request.title}</h5>
-                    <p class="card-text">
-                        {request.description}
+        <div className="col">
+            <div className="card shadow-sm border-0 rounded-4 overflow-hidden">
+                <img 
+                    src={request.requestImage} 
+                    className="card-img-top img-fluid object-fit-cover" 
+                    alt={request.title} 
+                    style={{ height: '220px', objectFit: 'cover' }}
+                />
+                <div className="card-body p-4">
+                    <h5 className="card-title text-primary fw-bold">{request.title}</h5>
+                    <p className="card-text text-muted" style={{ minHeight: '60px' }}>
+                        {request.description.length > 100 ? request.description.slice(0, 100) + "..." : request.description}
                     </p>
-                    <p className='bg-gray-400 px-2 py-2'>{request.status==="started"?"Active":"Distributed"}</p>
+                    
+                    <div className="d-flex justify-content-between align-items-center">
+                        <span className={`badge ${request.status === "started" ? "bg-success" : "bg-secondary"} py-2 px-3`}>
+                            {request.status === "started" ? "Available" : "Distributed"}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-    )
+    );
 }
