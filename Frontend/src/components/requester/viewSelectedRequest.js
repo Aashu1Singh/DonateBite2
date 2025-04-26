@@ -95,18 +95,20 @@ export default function ViewSelectedRequest({ requestData, getOneRequest }) {
               <div className="card-body">
                 <div className="row border-bottom">
                   <div>
-                    {localStatus === "started" ? (
-                      <button
-                        className="btn btn-outline-success"
-                        onClick={() => handleClick(requesterId)}
-                      >
-                        Accept this request
-                      </button>
-                    ) : (
-                      <button className="btn btn-success" disabled>
-                        Request Accepted
-                      </button>
-                    )}
+                  { getCookie("roles"!="1985")&&(
+  localStatus === "started" ? (
+    <button
+      className="btn btn-outline-success"
+      onClick={() => handleClick(requesterId)}
+    >
+      Accept this request
+    </button>
+  ) : (
+    <button className="btn btn-success" disabled>
+      Request Accepted
+    </button>
+  )
+)}
                   </div>
                 </div>
               </div>
