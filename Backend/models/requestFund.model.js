@@ -14,9 +14,13 @@ const RequestFundSchema = new Schema({
         type: Number,
         required: true
     },
-    country: {
+    state: {
         type: String,
-        required: true
+        required: false
+    },
+    city: {
+        type: String,
+        required: false
     },
     zipcode: {
         type: Number,
