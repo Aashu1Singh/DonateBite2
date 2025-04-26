@@ -14,6 +14,14 @@ const OrganizationSchema = new Schema({
         type: String,
         required: false
     },
+    state: {
+        type: String,
+        required: false
+    },
+    city: {
+        type: String,
+        required: true
+    },
     zipCode: {
         type: Number,
         required: false
