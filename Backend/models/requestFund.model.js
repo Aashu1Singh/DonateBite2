@@ -4,15 +4,15 @@ const Schema = mongoose.Schema
 const RequestFundSchema = new Schema({
     fname: {
         type: String,
-        required: true
+        // required: true
     },
     lname: {
         type: String,
-        required: true
+        // required: true
     },
     tpno: {
         type: Number,
-        required: true
+        // required: true
     },
     state: {
         type: String,
@@ -20,39 +20,47 @@ const RequestFundSchema = new Schema({
     },
     city: {
         type: String,
-        required: false
+        required: true
     },
     zipcode: {
         type: Number,
-        required: true
+        // required: true
     },
     email: {
         type: String,
-        required: true
+        // required: true
     },
     address: {
         type: String,
-        required: true
+        // required: true
     },
     userId: {
         type: String,
-        required:true
+        // required:true
     },
     contactno: {
         type: Number,
-        required: true
+        // required: true
     },
     title: {
         type: String,
-        required: true
+        // required: true
     },
     description: {
         type: String,
-        required: true
+        // required: true
+    },
+    state: {
+        type: String,
+        // required: true
+    },
+    city: {
+        type: String,
+        // required: true
     },
     requestImage: {
         type: String,
-        required: true
+        // required: true
     },
 
 })

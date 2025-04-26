@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { multiStepContext } from "./StepContex";
 
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
@@ -6,9 +6,35 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import Box from "@mui/material/Box";
 
+const stateCityData = {
+  Maharashtra: ["Mumbai", "Pune", "Nagpur", "Nashik"],
+  Karnataka: ["Bangalore", "Mysore", "Mangalore", "Hubli"],
+  TamilNadu: ["Chennai", "Coimbatore", "Madurai", "Salem"],
+  Delhi: ["New Delhi", "Dwarka", "Rohini", "Saket"],
+  WestBengal: ["Kolkata", "Howrah", "Durgapur", "Siliguri"],
+  Gujarat: ["Ahmedabad", "Surat", "Vadodara", "Rajkot"],
+  UttarPradesh: ["Lucknow", "Kanpur", "Varanasi", "Agra"],
+  Rajasthan: ["Jaipur", "Jodhpur", "Udaipur", "Ajmer"],
+  Punjab: ["Amritsar", "Ludhiana", "Chandigarh", "Patiala"],
+  Kerala: ["Kochi", "Thiruvananthapuram", "Kozhikode", "Thrissur"],
+};
+
 export default function StepOne() {
   const { setCurrentStep, userData, setUserData, formErrors } =
     useContext(multiStepContext);
+
+  const [cities, setCities] = useState([]);
+
+  const handleStateChange = (e) => {
+    const selectedState = e.target.value;
+    setUserData({ ...userData, state: selectedState, city: "" }); // Reset city when state changes
+
+    if (stateCityData[selectedState]) {
+      setCities(stateCityData[selectedState]);
+    } else {
+      setCities([]);
+    }
+  };
 
   return (
     <>
@@ -48,10 +74,56 @@ export default function StepOne() {
             {formErrors.address}
           </div>
 
-          <label className="form-label">Country</label>
-          <div className="input-group input-group-outline mb-1">
+          <div className="row">
+            {/* State */}
+            <div className="col-md-6">
+              <div className="input-group input-group-outline">
+                <select
+                  className="form-select"
+                  value={userData["state"] || ""}
+                  onChange={handleStateChange}
+                >
+                  <option value="">Select State</option>
+                  {Object.keys(stateCityData).map((state) => (
+                    <option key={state} value={state}>
+                      {state.replace(/([A-Z])/g, " $1").trim()}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="text-danger">{/* {formErrorsStep1.state} */}</div>
+            </div>
+
+            {/* City */}
+            <div className="col-md-6">
+              <div className="input-group input-group-outline">
+                <select
+                  className="form-select"
+                  value={userData["city"] || ""}
+                  onChange={(e) =>
+                    setUserData({ ...userData, city: e.target.value })
+                  }
+                  disabled={cities.length === 0}
+                >
+                  <option value="">Select City</option>
+                  {cities.map((city) => (
+                    <option key={city} value={city}>
+                      {city}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="text-danger">{/* {formErrorsStep1.city} */}</div>
+            </div>
+          </div>
+
+          {/* <label className="form-label">State</label> */}
+
+          {/* <label className="form-label">City</label> */}
+          {/* <div className="input-group input-group-outline mb-1">
             <input
               type="text"
+              <div className="input-group input-group-outline mb-1">
               className="form-control"
               // placeholder="Country"
               value={userData["country"]}
@@ -59,7 +131,7 @@ export default function StepOne() {
                 setUserData({ ...userData, country: e.target.value });
               }}
             />
-          </div>
+          </div> */}
           <div className="text-danger form-label mb-3">
             {formErrors.country}
           </div>
