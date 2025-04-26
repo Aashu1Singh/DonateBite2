@@ -61,18 +61,18 @@ console.log(datatable2);
           
         </div>
       </div>
-      <div className={classes.Card2}>
+      {/* <div className={classes.Card2}>
         <div className={classes.CardHeading2}><Link to={"/admin/reqfund"}>View Fundraisar Program<br/> Requests</Link></div>
         <div className={classes.CardData}>
           
         </div>
-      </div>
-      <div className={classes.Card2}>
+      </div> */}
+      {/* <div className={classes.Card2}>
         <div className={classes.CardHeading2}><Link to={"/admin/reqdon"}>View Donation Requests<br/> Requests</Link></div>
         <div className={classes.CardData}>
           
         </div>
-      </div>
+      </div> */}
       <div className={classes.Card2}>
         <div className={classes.CardHeading}>View Active Fundraisar Programs</div>
         <div className={classes.CardData}>
