@@ -43,7 +43,7 @@ export default function ViewRequest() {
             <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
               <NavButton page="Requests" path="User" />
               <div className="container-fluid" onClick={toggleSidenav}>
-                <ViewSelectedRequest requestData={requestData} />
+                <ViewSelectedRequest requestData={requestData} getOneRequest={getOneRequest} />
               </div>
             </main>
           </>

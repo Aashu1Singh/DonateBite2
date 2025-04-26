@@ -1,9 +1,9 @@
-import React , {useRef, useState} from "react";
+import React, { useRef, useState } from "react";
 import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import axios from "../../../api/axios";
-const LOGIN_URL = "/main/login";
+const LOGIN_URL = "/organization/login";
 
 export const OrgLogin = () => {
   const [cookies, setCookie] = useCookies(["access_token", "roles", "_id"]);
@@ -18,7 +18,6 @@ export const OrgLogin = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -26,7 +25,7 @@ export const OrgLogin = () => {
       console.log("HIIIII");
       const response = await axios.post(
         LOGIN_URL,
-        JSON.stringify({ username, password }),
+        JSON.stringify({ name: username, password }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -81,9 +80,6 @@ export const OrgLogin = () => {
       }
       //  errRef.current.focus();
       console.log("FFFFFFFF");
-
-
-    
     }
   };
 
@@ -101,9 +97,9 @@ export const OrgLogin = () => {
               //   ref={userRef}
               autoComplete="off"
               onChange={(e) => {
-                // setUser(e.target.value);
+                setUser(e.target.value);
               }}
-              //   value={username}
+              value={username}
               required
             />
           </div>
@@ -113,8 +109,8 @@ export const OrgLogin = () => {
               placeholder="Password"
               class="form-control"
               id="password"
-              //   onChange={(e) => setPwd(e.target.value)}
-              //   value={password}
+                onChange={(e) => setPwd(e.target.value)}
+                value={password}
               required
             />
           </div>
@@ -130,7 +126,8 @@ export const OrgLogin = () => {
           </div>
           <p class="text-center mb-3 pt-2">
             {" "}
-            Don't you have an account? <Link to="/organization/new">Sign up</Link>
+            Don't you have an account?{" "}
+            <Link to="/organization/new">Sign up</Link>
           </p>
         </form>
       </div>

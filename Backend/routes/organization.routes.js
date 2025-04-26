@@ -12,11 +12,13 @@ const { getNContributions } = require("../controllers/organization/summary/lates
 const { getDashboardSummary } = require("../controllers/organization/summary/dashboardSummary");
 const { contributionChart } = require("../controllers/organization/summary/contributionChart");
 const { generateReport } = require("../controllers/organization/summary/generateReport");
+const{handleOrganizationLogin,}=require('../controllers/organization/authController');
 
 const router = express.Router();
 
 router.get("/", getAllOrganizations)
 router.get("/:id", getOrganization)
+router.post("/login",handleOrganizationLogin)
 router.post("/register", createOrganization);
 router.get("/view", getAllOrganizations)
 router.put("/update/:id", updateOrganization)

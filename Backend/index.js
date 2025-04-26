@@ -28,6 +28,8 @@ app.use("/main", loginRouter);
 const organizationRoutes = require("./routes/organization.routes");
 app.use("/organization", organizationRoutes);
 
+//organization login
+
 // Fund
 const fundRoutes = require("./routes/fund.routes");
 app.use("/fund", fundRoutes);
