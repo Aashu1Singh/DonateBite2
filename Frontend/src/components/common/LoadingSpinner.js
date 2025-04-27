@@ -1,13 +1,12 @@
-import React from 'react'
+// Loader.js
+import React from 'react';
 
-export default function LoadingSpinner() {
-    return (
-        <div className="position-relative">
-            <div className="position-absolute top-50 start-50 translate-middle">
-                <div className="lds-ring">
-                    <div></div><div></div><div></div><div></div>
-                </div>
-            </div>
-        </div>
-    )
+export default function Loader() {
+  return (
+    <div className="d-flex justify-content-center align-items-center">
+      <div className="spinner-border text-primary" role="status" style={{ width: "2rem", height: "2rem" }}>
+        <span className="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  );
 }

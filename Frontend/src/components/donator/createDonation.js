@@ -31,7 +31,7 @@ export default function CreateDonation() {
   const [donationDescription, setDonationDescription] = useState("");
   const [donationEndDate, setDonationEndDate] = useState("");
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
@@ -62,7 +62,9 @@ export default function CreateDonation() {
       donationDescription,
     };
     console.log(donation);
+    
     await newDonation(donation)
+  
       .then((res) => {
         setLoading(false);
         swal("Donation Succesfully Created", "", "success").then((value) => {
@@ -97,6 +99,7 @@ export default function CreateDonation() {
             right: 0,
 
             margin: "auto",
+            zIndex:"50"
           }}
         >
           <LoadingSpinner />

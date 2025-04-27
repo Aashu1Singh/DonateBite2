@@ -3,8 +3,9 @@ import { FileUploader } from 'react-drag-drop-files';
 import { multiStepContext } from '../request/stepContex';
 import "../footer.css"
 import { Link } from 'react-router-dom';
+import Loader from '../../Loader';
 export default function RequestStepTwo() {
-  const { requestData, setRequestData, submitData, requestImage, setRequestImage, formErrorsStep2 } = useContext(multiStepContext);
+  const { requestData, setRequestData, submitData, requestImage, setRequestImage, formErrorsStep2,isLoading } = useContext(multiStepContext);
   const fileTypes = ["JPEG", "JPG", "PNG"];
 
       // Convert file into base64
@@ -29,6 +30,8 @@ export default function RequestStepTwo() {
     }
 
   return (
+    <>
+    {isLoading?<Loader/>:null}
     <div>
       <h4 className="pt-3 ms-4">Request Funds</h4>
       <p className='text-dark font-weight-normal mx-4'>Millions of children are dying every day from hunger and diseases that are made worse by undernutrition.
@@ -93,5 +96,6 @@ export default function RequestStepTwo() {
       </div>
       </div>
   </div>
+  </>
   )
 }
