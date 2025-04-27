@@ -97,7 +97,7 @@ export default function SideNav(props) {
                   <div className="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i className="material-icons opacity-10">receipt_long</i>
                   </div>
-                  <span className="nav-link-text ms-1">Requests</span>
+                  <span className="nav-link-text ms-1">Food Alerts</span>
                 </Link>
               ) : (
                 <Link

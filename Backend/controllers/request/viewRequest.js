@@ -21,7 +21,7 @@ const getRequestersRequest = async (req, res) => {
       return res.status(404).send({ msg: "User not found" });
     }
     let obj = {
-      ...request,
+      request,
       user: user,
     }
     // request.user = user; // Attach user to request object

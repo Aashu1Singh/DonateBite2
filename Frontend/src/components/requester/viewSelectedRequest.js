@@ -10,11 +10,11 @@ const LOGIN_URL = "/requester/updateReqStatus";
 export default function ViewSelectedRequest({ requestData, getOneRequest }) {
   const { requesterId } = useParams();
   const navigate = useNavigate();
-console.log("requestData", requestData)
-  const [localStatus, setLocalStatus] = useState(requestData?.status);
-
+  console.log("requestData", requestData);
+  const [localStatus, setLocalStatus] = useState(requestData?.request?.status);
+  // console.log("loca ", localStatus);
   useEffect(() => {
-    setLocalStatus(requestData?.status);
+    setLocalStatus(requestData?.request?.status);
   }, [requestData]);
 
   // console.log("response",response.data);
@@ -30,7 +30,6 @@ console.log("requestData", requestData)
           withCredentials: true,
         }
       );
-
 
       // Update local state
       setLocalStatus(userId);
@@ -77,15 +76,16 @@ console.log("requestData", requestData)
             <div className="card">
               <img
                 style={{ height: "300px", width: "100%", objectFit: "cover" }}
-                src={requestData?._doc?.requestImage}
+                src={requestData?.request?.requestImage}
                 className="card-img-top"
                 alt="..."
               />
               <div className="card-body">
                 <div className="row border-bottom">
                   <h5 className="text-normal">
-                    <i className="bi bi-person-circle"></i> {requestData?.user?.fname}{" "}
-                    {requestData?.user?.lname} is organizing this fund request.
+                    <i className="bi bi-person-circle"></i>{" "}
+                    {requestData?.user?.firstName} {requestData?.user?.lastName} is
+                    organizing this fund request.
                   </h5>
                 </div>
                 <div className="row border-bottom">
@@ -96,7 +96,7 @@ console.log("requestData", requestData)
                 <div className="row border-bottom">
                   <div>
                     {getCookie("roles") != "1984" &&
-                      (localStatus === "started" ? (
+                      (localStatus == "started" ? (
                         <button
                           className="btn btn-outline-success"
                           onClick={() => handleClick(requesterId)}
@@ -130,7 +130,7 @@ console.log("requestData", requestData)
             <div className="card-body">
               <div className="row border-bottom">
                 <h5 className="card-title">
-                  <center>Beneficiary's contact information</center>
+                  <center>Donor's contact information</center>
                 </h5>
               </div>
 
@@ -154,7 +154,7 @@ console.log("requestData", requestData)
                   </h3>
                 </div>
                 <div className="col-9 ps-0">
-                  <h6 className="pt-2 text-muted">{requestData?._doc?.city}</h6>
+                  <h6 className="pt-2 text-muted">{requestData?.request?.city} , {requestData?.request?.state}</h6>
                 </div>
               </div>
 
@@ -165,7 +165,9 @@ console.log("requestData", requestData)
                   </h3>
                 </div>
                 <div className="col-9 ps-0">
-                  <h6 className="pt-2 text-muted">{requestData?.user?.contactNumber}</h6>
+                  <h6 className="pt-2 text-muted">
+                    {requestData?.user?.contactNumber}
+                  </h6>
                 </div>
               </div>
 
@@ -176,7 +178,9 @@ console.log("requestData", requestData)
                   </h3>
                 </div>
                 <div className="col-9 ps-0">
-                  <h6 className="pt-2 text-muted">{requestData?.user?.email}</h6>
+                  <h6 className="pt-2 text-muted">
+                    {requestData?.user?.email}
+                  </h6>
                 </div>
               </div>
 
