@@ -10,13 +10,14 @@ const LOGIN_URL = "/requester/updateReqStatus";
 export default function ViewSelectedRequest({ requestData, getOneRequest }) {
   const { requesterId } = useParams();
   const navigate = useNavigate();
-
-  const [localStatus, setLocalStatus] = useState(requestData.status);
+console.log("requestData", requestData)
+  const [localStatus, setLocalStatus] = useState(requestData?.status);
 
   useEffect(() => {
-    setLocalStatus(requestData.status);
+    setLocalStatus(requestData?.status);
   }, [requestData]);
 
+  // console.log("response",response.data);
   const handleClick = async (id) => {
     const userId = getCookie("uId");
 
@@ -30,7 +31,6 @@ export default function ViewSelectedRequest({ requestData, getOneRequest }) {
         }
       );
 
-      console.log(response.data);
 
       // Update local state
       setLocalStatus(userId);
@@ -70,51 +70,50 @@ export default function ViewSelectedRequest({ requestData, getOneRequest }) {
 
   return (
     <div>
-      <h3>{requestData.title}</h3>
+      <h3>{requestData?.title}</h3>
       <div className="row">
         <div className="col-8">
           <div className="card-deck">
             <div className="card">
               <img
                 style={{ height: "300px", width: "100%", objectFit: "cover" }}
-                src={requestData.requestImage}
+                src={requestData?._doc?.requestImage}
                 className="card-img-top"
                 alt="..."
               />
               <div className="card-body">
                 <div className="row border-bottom">
                   <h5 className="text-normal">
-                    <i className="bi bi-person-circle"></i> {requestData.fname}{" "}
-                    {requestData.lname} is organizing this fund request.
+                    <i className="bi bi-person-circle"></i> {requestData?.user?.fname}{" "}
+                    {requestData?.user?.lname} is organizing this fund request.
                   </h5>
                 </div>
                 <div className="row border-bottom">
-                  <p className="card-text">{requestData.description}</p>
+                  <p className="card-text">{requestData?.description}</p>
                 </div>
               </div>
               <div className="card-body">
                 <div className="row border-bottom">
                   <div>
-                  { getCookie("roles")!="1984"&&(
-  localStatus === "started" ? (
-    <button
-      className="btn btn-outline-success"
-      onClick={() => handleClick(requesterId)}
-    >
-      Accept this request
-    </button>
-  ) : (
-    <button className="btn btn-success" disabled>
-      Request Accepted
-    </button>
-  )
-)}
+                    {getCookie("roles") != "1984" &&
+                      (localStatus === "started" ? (
+                        <button
+                          className="btn btn-outline-success"
+                          onClick={() => handleClick(requesterId)}
+                        >
+                          Accept this request
+                        </button>
+                      ) : (
+                        <button className="btn btn-success" disabled>
+                          Request Accepted
+                        </button>
+                      ))}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {requestData.userId === getCookie("uId") ? (
+          {requestData?.userId === getCookie("uId") ? (
             <div className="d-flex justify-content-center mt-4">
               <button
                 type="button"
@@ -143,7 +142,7 @@ export default function ViewSelectedRequest({ requestData, getOneRequest }) {
                 </div>
                 <div className="col-9 ps-0">
                   <h6 className="pt-2">
-                    {requestData.fname} {requestData.lname}
+                    {requestData?.user?.firstName} {requestData?.user?.lastName}
                   </h6>
                 </div>
               </div>
@@ -155,7 +154,7 @@ export default function ViewSelectedRequest({ requestData, getOneRequest }) {
                   </h3>
                 </div>
                 <div className="col-9 ps-0">
-                  <h6 className="pt-2 text-muted">{requestData.address}</h6>
+                  <h6 className="pt-2 text-muted">{requestData?._doc?.city}</h6>
                 </div>
               </div>
 
@@ -166,7 +165,7 @@ export default function ViewSelectedRequest({ requestData, getOneRequest }) {
                   </h3>
                 </div>
                 <div className="col-9 ps-0">
-                  <h6 className="pt-2 text-muted">{requestData.tpno}</h6>
+                  <h6 className="pt-2 text-muted">{requestData?.user?.contactNumber}</h6>
                 </div>
               </div>
 
@@ -177,7 +176,7 @@ export default function ViewSelectedRequest({ requestData, getOneRequest }) {
                   </h3>
                 </div>
                 <div className="col-9 ps-0">
-                  <h6 className="pt-2 text-muted">{requestData.email}</h6>
+                  <h6 className="pt-2 text-muted">{requestData?.user?.email}</h6>
                 </div>
               </div>
 

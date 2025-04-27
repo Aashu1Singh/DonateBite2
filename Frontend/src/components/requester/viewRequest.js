@@ -23,7 +23,7 @@ export default function ViewRequest() {
         setLoading(false);
         console.log(res);
 
-        setRequestData(res.data.requests[0]);
+        setRequestData(res.data.request);
         // console.log(res.data);
         console.log(requestData);
 

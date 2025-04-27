@@ -106,42 +106,55 @@ export default function MyRequests() {
           ) : (
             <div className="row">
               {showRequests.map((request) => (
-                <Link
-                  to={`/requester/view/request/${request._id}`}
-                  key={request._id}
-                >
-                  <div class="card mx-4 mb-3">
-                    <div class="row no-gutters">
-                      <div class="col-md-3 p-0">
-                        <img
-                          src={request.requestImage}
-                          class="card-img"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="col-md-9">
-                        <div class="card-body">
-                          <div className="row">
-                            <div className="col-10">
-                              <h5 class="card-title">{request.title}</h5>
-                            </div>
+                // <Link
+                //   to={`/requester/view/request/${request._id}`}
+                //   key={request._id}
+                // >
+                <div className="card mx-4 mb-3 shadow rounded">
+                  <div className="row g-0">
+                    {/* Left Side - Image */}
+                    <div className="col-md-4">
+                      <img
+                        src={request.requestImage}
+                        className="img-fluid rounded-start"
+                        alt="Request"
+                        style={{ height: "100%", objectFit: "cover" }}
+                      />
+                    </div>
 
-                            {/* <div className="col-2">
-                              <h6>
-                                <i className="bi bi-pencil-square ms-5"></i>{" "}
-                                Edit
-                              </h6>
-                            </div> */}
-                          </div>
-                          <h6 class="card-title">
-                            By {request.fname} {request.lname}
+                    {/* Right Side - Content */}
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <div className="d-flex justify-content-between align-items-center mb-2">
+                          <h5 className="card-title mb-0">{request.title}</h5>
+                          <span className="badge bg-success">
+                            {request.city}, {request.state}
+                          </span>
+                        </div>
+
+                        <p
+                          className="card-text text-muted"
+                          style={{ fontSize: "14px" }}
+                        >
+                          {request.description}
+                        </p>
+
+                        <hr />
+
+                        <div className="d-flex align-items-center">
+                          <i
+                            className="bi bi-person-circle me-2"
+                            style={{ fontSize: "24px" }}
+                          ></i>
+                          <h6 className="mb-0">
+                            {/* {request.fname} {request.lname} */}
                           </h6>
-                          <p class="card-text">{request.description}</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                </Link>
+                </div>
+                // </Link>
               ))}
             </div>
           )}
