@@ -14,6 +14,7 @@ import RequestedDonation from "../pages/admin/adminReqDonList";
 import AcceptedDonation from "../pages/admin/adminAcceptedDonList";
 import ReviewOrganization from "../pages/admin/adminReviewOrg";
 import { Individuals } from "../components/admin/Individuals";
+import DashboarIndivi from "../components/admin/DashboardIndi";
 // import Individuals from "../components/admin/Individuals";
 
 export default function Donator() {
@@ -21,7 +22,7 @@ export default function Donator() {
       <>
         <Routes>
           <Route path="/dashboard" element={<AdminDashboard />} />
-          <Route path="/individuals" element={<Individuals />} />
+          <Route path="/individuals" element={<DashboarIndivi />} />
           <Route path="/reqorglist" element={<AdminReqOrg/>}/>
           <Route path="/regorglist" element={<AdminRegOrg/>}/>
           <Route path="/reqfund" element={<AdminReqFund/>}/>

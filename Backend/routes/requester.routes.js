@@ -9,12 +9,14 @@ const { getRequestersRequest } = require("../controllers/request/viewRequest");
 const { getMyRequests } = require("../controllers/request/viewMyRequests");
 const { deleteRequest } = require("../controllers/request/deleteRequest");
 const { editRequestStatus } = require("../controllers/request/UpdateacceptRequest");
+const { getIndividuals } = require("../controllers/requester/Individuals");
 
 
 const router = express.Router();
 
 router.post("/requesterSignUp", requesterSignUp);
 router.post("/createRequest", createRequest);
+router.get("/fetchindividuals", getIndividuals);
 router.post("/updateReqStatus/:id", editRequestStatus);
 router.get("/profile/:id", viewUserProfile);
 router.put("/updateProfile/:id", updateProfile);
